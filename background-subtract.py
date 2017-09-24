@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import sys
 
-filename = 'omni4.avi'
+filename = 'tiso.avi'
 cap = cv2.VideoCapture(filename)
 
 frame_width = int(cap.get(3))
@@ -12,7 +12,8 @@ subtract_mode = 'MOG2'
 ret, frame = cap.read()
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter(filename + 'output-bg-subtract-' + subtract_mode + '.avi',fourcc, 20.0, (1280,720), isColor=False)
+#out = cv2.VideoWriter(filename + 'output-bg-subtract-' + subtract_mode + '.avi',fourcc, 20.0, (1280,720), isColor=False)
+out = cv2.VideoWriter(filename.replace(".avi","") + 'output-bg-subtract-' + subtract_mode + '.avi',fourcc, 20.0, (frame_width, frame_height), isColor=False)
 
 #kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
 if subtract_mode == 'MOG2':
